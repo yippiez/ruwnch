@@ -1,4 +1,3 @@
-
 import sys
 import json
 import os
@@ -41,10 +40,13 @@ def get_config(key: str) -> bool | int | None:
         bool | int: value of the config
     """
 
-    if not os.path.exists("config.json"):
+    home_dir = os.path.expanduser("~")
+    config_path = os.path.join(home_dir, ".ruwnch.config")
+
+    if not os.path.exists(config_path):
         fatal("Config missing, this shouldn't be.")
 
-    with open("config.json", "r") as f:
+    with open(config_path, "r") as f:
         config = json.loads(f.read())
 
         try:
@@ -148,8 +150,11 @@ def fatal(msg: str):
 
 def generate_missing_files():
 
-    if not os.path.exists("config.json"):
-        with open("config.json", "w") as f:
+    home_dir = os.path.expanduser("~")
+    config_path = os.path.join(home_dir, ".ruwnch.config")
+
+    if not os.path.exists(config_path):
+        with open(config_path, "w") as f:
             json_string = json.dumps(DEFAULT_CONFIG)
             f.write(json_string)
 
