@@ -60,9 +60,7 @@ This behaviour can be changed in config to stop the execution if an error occurs
 
 ## Config
 
-There are few options that can be changed in ruwnch runtime. These are done using the config.json provided.
-
-> config.json has to be in the same directory as ruwnch
+There are few options that can be changed in ruwnch runtime. These are done using the `.ruwnch.config` file in the home directory.
 
 ```json
 {
